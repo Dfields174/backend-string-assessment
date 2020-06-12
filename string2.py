@@ -23,8 +23,13 @@ __author__ = "???"
 
 
 def verbing(s):
-    # your code here
-    return
+  if len(s) >= 3:
+    if s.endswith("ing"):
+      s += "ly"
+    else:
+      s += "ing"
+  return s
+    
 
 
 # E. not_bad
@@ -37,8 +42,14 @@ def verbing(s):
 
 
 def not_bad(s):
-    # your code here
-    return
+  notindex = s.find('not')
+  if notindex != -1:
+    if s.find('bad') != -1:
+      badindex = s.find('bad') + 3
+      if notindex < badindex:
+        removetext = s[notindex:badindex]
+        return s.replace(removetext, 'good')
+  return s
 
 
 # F. front_back
@@ -52,8 +63,27 @@ def not_bad(s):
 
 
 def front_back(a, b):
-    # your code here
-    return
+  # +++your code here+++
+  aLength = len(a)
+  bLength = len(b)
+  aEven = (aLength % 2 == 0)
+  bEven = (bLength % 2 == 0)
+  if aEven:
+    afront = a[:(aLength//2)]
+    aback = a[(aLength//2):]
+  else:
+    afront = a[:aLength//2 + 1]
+    aback = a[aLength//2 + 1:]
+
+  if bEven:
+    bfront = b[:bLength//2]
+    bback = b[bLength//2:]
+  else:
+    bfront = b[:bLength//2 + 1]
+    bback = b[bLength//2 + 1:]
+
+  return afront + bfront + aback + bback
+
 
 
 # Provided simple test() function used in main() to print
